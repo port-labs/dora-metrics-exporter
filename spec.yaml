@@ -1,0 +1,21 @@
+description: my dora metrics integration
+icon: dora
+features:
+  - type: exporter
+    resources:
+      - sourceControl: Github
+      - cicd: Jenkins
+      - incidentManagement: Pagerduty
+configurations:
+  sourceControl:
+    - name:
+    - type:
+    - sensitive:
+  cicd:
+    - name:
+    - type:
+    - sensitive:
+  incidentManagement:
+    - name:
+    - type:
+    - sensitive:
