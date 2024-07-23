@@ -20,4 +20,3 @@ def main(system: str):
 
 if __name__ == "__main__":
     main('github')  # Replace 'github' with 'gitlab' or 'azure_devops' as needed
-        

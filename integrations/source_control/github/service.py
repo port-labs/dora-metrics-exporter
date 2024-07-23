@@ -11,7 +11,6 @@ if TYPE_CHECKING:
     from github.PullRequest import PullRequest
 
 class GitHubSourceControl(SourceControlInterface):
-
     
     async def _get_commits(self,pull_request:PullRequest)-> List[Commit]:
         return [Commit(id=commit.id,

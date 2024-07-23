@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 from typing import List
+from datetime import datetime
 
 
 class Service(BaseModel):
@@ -45,3 +46,17 @@ class SourceControl(BaseModel):
     class Config:
         extra = "allow"
 
+
+class Deployment(BaseModel):
+    id: int
+    name: str
+    environment: str
+    timestamp: datetime
+    status: str
+
+
+class Pipeline(BaseModel):
+    id: int
+    name: str
+    deployments: List[Deployment]
+    frequency: int

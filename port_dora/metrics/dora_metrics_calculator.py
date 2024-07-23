@@ -1,6 +1,4 @@
-from interfaces.source_control import SourceControlInterface
-from interfaces.cicd import CICDInterface
-from interfaces.incident_management import IncidentManagementInterface
+from port_dora.core.integrations.interfaces import SourceControlInterface, CICDInterface, IncidentManagementInterface
 from datetime import datetime
 
 class DoraMetricsCalculator:
@@ -10,15 +8,15 @@ class DoraMetricsCalculator:
         self.cicd = cicd
         self.incident_management = incident_management
     
-    def compute_deployment_frequency(self) -> float:
+    def compute_deployment_frequency(self,service) -> float:
         deployment_data = self.cicd.get_deployment_data()
         # Implement logic to compute deployment frequency
         pass
     
-    def compute_lead_time_for_changes(self) -> float:
+    def compute_lead_time_for_changes(self,service) -> float:
         # Implement logic to compute lead time for changes
-        commit_data = self.source_control.get_commit_data()
-        deployment_data = self.cicd.get_deployment_data()
+        commit_data = self.source_control.get_commit_data(service.id)
+        deployment_data = self.cicd.get_deployment_data(service.id)
         lead_times = []
         for deployment in deployment_data:
             deployment_time = datetime.strptime(deployment['timestamp'], '%Y-%m-%dT%H:%M:%SZ')
@@ -30,13 +28,13 @@ class DoraMetricsCalculator:
         
         return sum(lead_times) / len(lead_times) if lead_times else 0
     
-    def compute_change_failure_rate(self) -> float:
+    def compute_change_failure_rate(self,service) -> float:
         failure_data = self.source_control.get_failure_data()
         deployment_data = self.cicd.get_deployment_data()
         # Implement logic to compute change failure rate
         pass
     
-    def compute_mttr(self) -> float:
+    def compute_mttr(self,service) -> float:
         recovery_data = self.incident_management.get_recovery_data()
         # Implement logic to compute mean time to recovery
         pass

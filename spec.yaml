@@ -3,9 +3,9 @@ icon: dora
 features:
   - type: exporter
     resources:
-      - sourceControl: Github
+      - sourceControl: GitHub
       - cicd: Jenkins
-      - incidentManagement: Pagerduty
+      - incidentManagement: PagerDuty
 configurations:
   sourceControl:
     - name:

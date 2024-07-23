@@ -62,8 +62,6 @@ class InMemoryCache(metaclass=SingletonMeta):
                 return True
             return False
 
-class CACHE_KEYS:
-    WORKFLOWS_CACHE_KEY:str = "__CICD_CACHE_KEY"
-    SERVICE_CACHE_KEY:str = "__SOURCE_CONTROL_SERVICES_CACHE_KEY"
-    INCIDENTS_CACHE_KEY:str = "__INCIDENT_CACHE_KEY"
     
+
+cache = InMemoryCache()

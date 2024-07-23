@@ -7,7 +7,7 @@ from typing import cast, TYPE_CHECKING, List, Dict, Any, Literal, AsyncGenerator
 from github import Github, GithubObject, GithubException, Repository, PullRequest, NamedUser, Team, Membership, Issue, PullRequestReview, Commit
 import datetime
 from asyncFetcher import AsyncFetcher
-from utils import cache
+from port_dora.utils.cache import cache
 from loguru import logger
 
 

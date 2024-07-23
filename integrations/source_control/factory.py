@@ -1,7 +1,10 @@
 from .github.service import GitHubSourceControl
 from .gitlab.service import GitLabSourceControl
 from .azure_devops.service import AzureDevOpsSourceControl
-from .interface import SourceControlInterface
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from source_control.interface import SourceControlInterface
 
 class SourceControlFactory:
     _source_control_map = {
@@ -11,8 +14,8 @@ class SourceControlFactory:
     }
 
     @staticmethod
-    def get_source_control(system: str) -> SourceControlInterface:
+    def get_source_control(integration: str) -> SourceControlInterface:
         try:
-            return SourceControlFactory._source_control_map[system]()
+            return SourceControlFactory._source_control_map[integration]()
         except KeyError:
-            raise ValueError(f"Unknown source control system: {system}")
+            raise ValueError(f"Unknown source control system: {integration}")
